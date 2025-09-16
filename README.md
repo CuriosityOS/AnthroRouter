@@ -64,7 +64,7 @@ x-api-key: your-api-key
 
 ```json
 {
-  "model": "google/gemini-2.0-flash-exp:free",
+  "model": "google/gemini-2.5-flash",
   "messages": [
     {
       "role": "user",
@@ -91,7 +91,7 @@ x-api-key: your-api-key
       "text": "I'm doing well, thank you!"
     }
   ],
-  "model": "google/gemini-2.0-flash-exp:free",
+  "model": "google/gemini-2.5-flash",
   "stop_reason": "end_turn",
   "stop_sequence": null,
   "usage": {
@@ -128,7 +128,7 @@ const anthropic = new Anthropic({
 });
 
 const message = await anthropic.messages.create({
-  model: 'google/gemini-2.0-flash-exp:free',
+  model: 'google/gemini-2.5-flash',
   max_tokens: 100,
   messages: [{ role: 'user', content: 'Hello!' }]
 });
