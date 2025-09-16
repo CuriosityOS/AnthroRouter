@@ -115,6 +115,23 @@ data: {"type":"message_stop"}
 
 You can use any model available on OpenRouter. See [OpenRouter's model list](https://openrouter.ai/models) for all available options.
 
+## Using with Claude Code
+
+You can use AnthroRouter as a backend for Claude Code to access OpenRouter models:
+
+```bash
+# Set your API key
+export ANTHROPIC_API_KEY="your-api-key"
+
+# Point Claude Code to AnthroRouter
+export ANTHROPIC_BASE_URL="http://localhost:3000/api/v1"
+
+# Now Claude Code will use OpenRouter models
+claude --model google/gemini-2.5-flash "Hello!"
+```
+
+> **⚠️ Important:** Using AnthroRouter with Claude Code will disable Claude Code's built-in web search functionality, as it relies on Anthropic's infrastructure. For web search capabilities, we recommend using the [Perplexity MCP](https://github.com/mcp/perplexity) instead.
+
 ## Using with Anthropic SDK
 
 You can use this proxy with the official Anthropic SDK:
