@@ -32,7 +32,7 @@ export async function handleStreamingResponse(openRouterResponse: globalThis.Res
             // Send Anthropic completion event
             const anthropicDone = { type: 'message_stop' };
             expressRes.write(`data: ${JSON.stringify(anthropicDone)}\n\n`);
-            expressRes.write('event: message_stop\n\n');
+            // Don't send the event: message_stop line - Claude Code doesn't expect it
             continue;
           }
 

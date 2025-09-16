@@ -20,8 +20,8 @@ app.get('/health', (req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
-// Main API endpoint
-app.post('/api/v1/messages', async (req, res) => {
+// Main API endpoint - support both paths for compatibility
+const messageHandler = async (req: express.Request, res: express.Response) => {
   try {
     // Validate API key
     const apiKey = req.headers['x-api-key'] as string;
@@ -114,7 +114,11 @@ app.post('/api/v1/messages', async (req, res) => {
       }
     });
   }
-});
+};
+
+// Register the handler on both paths for compatibility
+app.post('/api/v1/messages', messageHandler);
+app.post('/v1/messages', messageHandler);
 
 // 404 handler
 app.use((req, res) => {
